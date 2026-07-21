@@ -4,127 +4,343 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProTemplates | Plantillas Web Nivel Pro</title>
-    <!-- Tailwind CSS para un diseño rápido y moderno -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Animación para la Splash Screen */
+        #splash-screen {
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+    </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Header / Navbar -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+    <!-- SPLASH SCREEN -->
+    <div id="splash-screen" class="fixed inset-0 z-50 bg-slate-950 flex flex-col items-center justify-center">
+        <div class="flex items-center space-x-3 mb-6 animate-pulse">
+            <i class="fa-solid fa-code text-indigo-500 text-4xl"></i>
+            <span class="text-3xl font-extrabold tracking-tight">Pro<span class="text-indigo-500">Templates</span></span>
+        </div>
+        <div class="w-48 h-1 bg-slate-800 rounded-full overflow-hidden">
+            <div class="bg-indigo-500 h-full w-full animate-[ping_1s_infinite]"></div>
+        </div>
+        <p class="text-slate-500 text-xs mt-4 tracking-widest uppercase">Cargando Experiencia Pro...</p>
+    </div>
+
+    <!-- HEADER / NAVBAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-2">
                 <i class="fa-solid fa-code text-indigo-500 text-2xl"></i>
                 <span class="text-xl font-bold tracking-tight">Pro<span class="text-indigo-500">Templates</span></span>
             </div>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
-                <a href="#features" class="hover:text-indigo-400 transition">Ventajas</a>
                 <a href="#templates" class="hover:text-indigo-400 transition">Catálogo</a>
+                <a href="#categories" class="hover:text-indigo-400 transition">Categorías</a>
                 <a href="#faq" class="hover:text-indigo-400 transition">FAQ</a>
             </nav>
-            <a href="#templates" class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl font-medium text-sm transition shadow-lg shadow-indigo-500/20">
-                Ver Catálogo
-            </a>
+            <div class="flex items-center space-x-4">
+                <!-- Botón del Carrito -->
+                <button onclick="toggleCart()" class="relative bg-slate-900 border border-slate-800 hover:border-slate-700 p-2.5 rounded-xl text-slate-300 transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count" class="absolute -top-1.5 -right-1.5 bg-indigo-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-lg shadow-indigo-600/50">0</span>
+                </button>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="pt-32 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
+    <!-- HERO SECTION -->
+    <section class="pt-36 pb-20 md:pt-44 md:pb-32 relative overflow-hidden">
         <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-indigo-900/20 via-transparent to-transparent -z-10"></div>
         <div class="max-w-7xl mx-auto px-6 text-center">
             <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold mb-6">
-                <i class="fa-solid fa-bolt"></i> Código Limpio &bull; 100% Responsivo &bull; SEO Optimizado
+                <i class="fa-solid fa-bolt"></i> Código Limpio &bull; Múltiples Tipos &bull; Listas para Producción
             </div>
             <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-6">
-                Plantillas Web <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400">Nivel Pro</span> para Developers & Creators
+                Plantillas Web <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-violet-400">Nivel Pro</span> para cada proyecto
             </h1>
             <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10">
-                Ahorra semanas de desarrollo. Plantillas ultra-optimizadas, modernas y listas para personalizar y escalar tus proyectos al instante.
+                Elige entre SaaS, E-commerce, Dashboards, Portafolios y Landing Pages de alta conversión. Compra directa y rápida vía WhatsApp.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <div class="flex justify-center gap-4">
                 <a href="#templates" class="bg-indigo-600 hover:bg-indigo-500 text-white font-medium px-8 py-4 rounded-xl transition shadow-xl shadow-indigo-600/20">
-                    Explorar Plantillas
-                </a>
-                <a href="https://github.com/tu-usuario" target="_blank" class="bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium px-8 py-4 rounded-xl transition flex items-center justify-center gap-2">
-                    <i class="fa-brands fa-github text-lg"></i> Ver GitHub
+                    Ver Catálogo Completo
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Templates Grid Section -->
-    <section id="templates" class="py-20 border-t border-slate-900 bg-slate-900/40">
+    <!-- FILTROS DE CATEGORÍAS -->
+    <section id="categories" class="py-6 border-t border-slate-900 bg-slate-900/20 sticky top-20 z-30 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 flex items-center justify-start md:justify-center overflow-x-auto gap-3 no-scrollbar">
+            <button onclick="filterTemplates('all')" class="cat-btn active-cat bg-indigo-600 text-white text-xs font-semibold px-4 py-2 rounded-xl transition whitespace-nowrap">Todas</button>
+            <button onclick="filterTemplates('saas')" class="cat-btn bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 text-xs font-semibold px-4 py-2 rounded-xl transition whitespace-nowrap">SaaS & Startup</button>
+            <button onclick="filterTemplates('ecommerce')" class="cat-btn bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 text-xs font-semibold px-4 py-2 rounded-xl transition whitespace-nowrap">E-commerce</button>
+            <button onclick="filterTemplates('dashboard')" class="cat-btn bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 text-xs font-semibold px-4 py-2 rounded-xl transition whitespace-nowrap">Dashboards & Admin</button>
+            <button onclick="filterTemplates('portfolio')" class="cat-btn bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 text-xs font-semibold px-4 py-2 rounded-xl transition whitespace-nowrap">Portafolios</button>
+            <button onclick="filterTemplates('landing')" class="cat-btn bg-slate-900 border border-slate-800 text-slate-300 hover:border-slate-700 text-xs font-semibold px-4 py-2 rounded-xl transition whitespace-nowrap">Landing Pages</button>
+        </div>
+    </section>
+
+    <!-- GRID DE PLANTILLAS -->
+    <section id="templates" class="py-20">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <h2 class="text-3xl font-bold mb-4">Catálogo Pro</h2>
-                <p class="text-slate-400">Selecciona la plantilla perfecta para tu próximo gran proyecto digital.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Template Card 1 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
-                        <i class="fa-solid fa-laptop-code text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
-                        <span class="absolute top-3 right-3 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold px-3 py-1 rounded-full">SaaS / Startup</span>
+            <div id="templates-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Plantilla 1 -->
+                <div class="template-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group flex flex-col justify-between" data-category="saas">
+                    <div>
+                        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-laptop-code text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-3 right-3 bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold px-3 py-1 rounded-full">SaaS</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">SaaSFlow Pro</h3>
+                            <p class="text-slate-400 text-sm mb-6">Plataforma web ideal para aplicaciones en la nube, empresas tech y startups de IA.</p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">SaaSFlow Pro</h3>
-                        <p class="text-slate-400 text-sm mb-6">Plantilla ideal para aplicaciones web, startups y servicios tecnológicos avanzados.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                            <span class="text-2xl font-bold text-white">$49 <span class="text-xs font-normal text-slate-400">USD</span></span>
-                            <div class="space-x-2">
-                                <a href="templates/template-1/" target="_blank" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
-                                <a href="https://buy.stripe.com/tu-enlace-de-pago" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition">Comprar</a>
-                            </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-4">
+                        <span class="text-2xl font-bold text-white">$49 <span class="text-xs font-normal text-slate-400">USD</span></span>
+                        <div class="space-x-2">
+                            <a href="templates/template-1/" target="_blank" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
+                            <button onclick="addToCart('SaaSFlow Pro', 49)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/20">Agregar</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Template Card 2 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
-                        <i class="fa-solid fa-store text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
-                        <span class="absolute top-3 right-3 bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-semibold px-3 py-1 rounded-full">E-commerce</span>
+                <!-- Plantilla 2 -->
+                <div class="template-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group flex flex-col justify-between" data-category="ecommerce">
+                    <div>
+                        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-store text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-3 right-3 bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-semibold px-3 py-1 rounded-full">E-commerce</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">Nexus Commerce</h3>
+                            <p class="text-slate-400 text-sm mb-6">Tienda online minimalista optimizada para alta conversión de ventas y pasarelas.</p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">Nexus Commerce</h3>
-                        <p class="text-slate-400 text-sm mb-6">Diseño minimalista y de alta conversión enfocado en tiendas virtuales y marcas de moda.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                            <span class="text-2xl font-bold text-white">$59 <span class="text-xs font-normal text-slate-400">USD</span></span>
-                            <div class="space-x-2">
-                                <a href="templates/template-2/" target="_blank" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
-                                <a href="https://buy.stripe.com/tu-enlace-de-pago" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition">Comprar</a>
-                            </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-4">
+                        <span class="text-2xl font-bold text-white">$59 <span class="text-xs font-normal text-slate-400">USD</span></span>
+                        <div class="space-x-2">
+                            <a href="templates/template-2/" target="_blank" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
+                            <button onclick="addToCart('Nexus Commerce', 59)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/20">Agregar</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Template Card 3 -->
-                <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group">
-                    <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
-                        <i class="fa-solid fa-user-tie text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
-                        <span class="absolute top-3 right-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full">Portafolio</span>
+                <!-- Plantilla 3 -->
+                <div class="template-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group flex flex-col justify-between" data-category="dashboard">
+                    <div>
+                        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-chart-pie text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-3 right-3 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold px-3 py-1 rounded-full">Dashboard</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">MetricAdmin X</h3>
+                            <p class="text-slate-400 text-sm mb-6">Panel de control administrativo con gráficas interactivas, tablas dinámicas y modo oscuro nativo.</p>
+                        </div>
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold mb-2">DevPortfolio X</h3>
-                        <p class="text-slate-400 text-sm mb-6">Destaca tu experiencia profesional con un portafolio interactivo y moderno estilo bento grid.</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-slate-800">
-                            <span class="text-2xl font-bold text-white">$29 <span class="text-xs font-normal text-slate-400">USD</span></span>
-                            <div class="space-x-2">
-                                <a href="#" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
-                                <a href="https://buy.stripe.com/tu-enlace-de-pago" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition">Comprar</a>
-                            </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-4">
+                        <span class="text-2xl font-bold text-white">$69 <span class="text-xs font-normal text-slate-400">USD</span></span>
+                        <div class="space-x-2">
+                            <a href="#" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
+                            <button onclick="addToCart('MetricAdmin X', 69)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/20">Agregar</button>
                         </div>
                     </div>
                 </div>
+
+                <!-- Plantilla 4 -->
+                <div class="template-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group flex flex-col justify-between" data-category="portfolio">
+                    <div>
+                        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-user-tie text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-3 right-3 bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-semibold px-3 py-1 rounded-full">Portafolio</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">DevFolio Bento</h3>
+                            <p class="text-slate-400 text-sm mb-6">Portafolio personal de alto impacto con estructura Bento Grid enfocado en desarrolladores.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-4">
+                        <span class="text-2xl font-bold text-white">$29 <span class="text-xs font-normal text-slate-400">USD</span></span>
+                        <div class="space-x-2">
+                            <a href="#" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
+                            <button onclick="addToCart('DevFolio Bento', 29)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/20">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Plantilla 5 -->
+                <div class="template-card bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-indigo-500/50 transition duration-300 group flex flex-col justify-between" data-category="landing">
+                    <div>
+                        <div class="h-48 bg-slate-800 relative overflow-hidden flex items-center justify-center">
+                            <i class="fa-solid fa-rocket text-5xl text-slate-700 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-3 right-3 bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs font-semibold px-3 py-1 rounded-full">Landing Page</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold mb-2">LaunchFast App</h3>
+                            <p class="text-slate-400 text-sm mb-6">Landing page diseñada exclusivamente para lanzamientos de aplicaciones móviles y productos digitales.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-slate-800/60 mt-4">
+                        <span class="text-2xl font-bold text-white">$35 <span class="text-xs font-normal text-slate-400">USD</span></span>
+                        <div class="space-x-2">
+                            <a href="#" class="text-slate-400 hover:text-white text-sm font-medium px-3 py-2 transition">Demo</a>
+                            <button onclick="addToCart('LaunchFast App', 35)" class="bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-medium px-4 py-2 rounded-lg transition shadow-lg shadow-indigo-600/20">Agregar</button>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- CARRITO LATERAL (MODAL) -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-full max-w-md bg-slate-900 border-l border-slate-800 h-full flex flex-col justify-between p-6 shadow-2xl">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+                    <h2 class="text-xl font-bold flex items-center gap-2"><i class="fa-solid fa-cart-shopping text-indigo-500"></i> Tu Carrito</h2>
+                    <button onclick="toggleCart()" class="text-slate-400 hover:text-white text-lg"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+                <!-- Lista de items seleccionados -->
+                <div id="cart-items" class="py-6 space-y-4 max-h-[55vh] overflow-y-auto">
+                    <p class="text-slate-500 text-center text-sm py-10">Tu carrito está vacío</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-4">
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-slate-400 font-medium">Total:</span>
+                    <span id="cart-total" class="text-2xl font-extrabold text-white">$0 USD</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-semibold py-4 rounded-xl transition flex items-center justify-center gap-2 shadow-lg shadow-emerald-600/20">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Pagar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="py-10 border-t border-slate-900 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 ProTemplates. Todos los derechos reservados. Creado con GitHub Pages.</p>
+        <p>&copy; 2026 ProTemplates. Todos los derechos reservados. Pagos seguros y directos vía WhatsApp.</p>
     </footer>
 
+    <!-- LÓGICA JAVASCRIPT -->
+    <script>
+        // Ocultar Splash Screen al cargar la página por completo
+        window.addEventListener('load', () => {
+            const splash = document.getElementById('splash-screen');
+            splash.style.opacity = '0';
+            splash.style.visibility = 'hidden';
+        });
+
+        // Estado del Carrito
+        let cart = [];
+
+        function toggleCart() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCartUI();
+            // Abrir automáticamente el carrito al agregar un producto
+            toggleCart();
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = `<p class="text-slate-500 text-center text-sm py-10">Tu carrito está vacío</p>`;
+                cartTotal.textContent = `$0 USD`;
+                return;
+            }
+
+            let html = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.quantity;
+                total += subtotal;
+                html += `
+                    <div class="flex items-center justify-between bg-slate-950/50 p-3 rounded-xl border border-slate-800">
+                        <div>
+                            <h4 class="font-semibold text-sm">${item.name}</h4>
+                            <p class="text-xs text-slate-400">$${item.price} USD x ${item.quantity}</p>
+                        </div>
+                        <button onclick="removeFromCart(${index})" class="text-red-400 hover:text-red-300 text-sm px-2"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                `;
+            });
+
+            cartItems.innerHTML = html;
+            cartTotal.textContent = `$${total} USD`;
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Tu carrito está vacío.');
+                return;
+            }
+
+            // REEMPLAZA ESTE NÚMERO POR TU NÚMERO DE WHATSAPP (con código de país, sin el signo +)
+            const phoneNumber = "51999999999"; 
+
+            let message = "Hola! 🚀 Deseo comprar las siguientes plantillas web Pro:\n\n";
+            let total = 0;
+
+            cart.forEach(item => {
+                let subtotal = item.price * item.quantity;
+                total += subtotal;
+                message += `- *${item.name}* (Cantidad: ${item.quantity}) - $${subtotal} USD\n`;
+            });
+
+            message += `\n*Total a pagar: $${total} USD*\n\n¿Me indican los datos para realizar el pago y recibir el código fuente?`;
+
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Filtro de Categorías
+        function filterTemplates(category) {
+            // Actualizar diseño de botones
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.classList.remove('bg-indigo-600', 'text-white');
+                btn.classList.add('bg-slate-900', 'border', 'border-slate-800', 'text-slate-300');
+            });
+            event.target.classList.remove('bg-slate-900', 'border', 'border-slate-800', 'text-slate-300');
+            event.target.classList.add('bg-indigo-600', 'text-white');
+
+            // Filtrar tarjetas
+            const cards = document.querySelectorAll('.template-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
